@@ -1,1 +1,2 @@
-import "../css/options.css";
+import '../css/bootstrap.min.css'
+import '../css/options.css'

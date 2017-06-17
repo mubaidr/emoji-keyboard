@@ -1,4 +1,2 @@
-import "../css/popup.css";
-import hello from "./popup/example";
-
-hello();
+import '../css/bootstrap.min.css'
+import '../css/popup.css'
