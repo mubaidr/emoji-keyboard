@@ -35,3 +35,5 @@ var server =
   })
 
 server.listen(env.PORT)
+
+console.log('listining...')
