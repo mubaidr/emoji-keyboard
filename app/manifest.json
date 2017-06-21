@@ -2,7 +2,7 @@
   "name": "__MSG_appName__",
   "short_name": "__MSG_appShortName__",
   "description": "__MSG_appDescription__",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "manifest_version": 2,
   "default_locale": "en",
   "icons": {
@@ -27,27 +27,24 @@
     "page": "pages/options.html",
     "chrome_style": true
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/*",
-        "https://*/*"
-      ],
-      "css": [
-        "styles/contentscript.css"
-      ],
-      "js": [
-        "scripts/contentscript.js"
-      ],
-      "run_at": "document_end",
-      "all_frames": false
-    }
-  ],
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "css": [
+      "styles/contentscript.css"
+    ],
+    "js": [
+      "scripts/contentscript.js",
+      "scripts/jquery.min.js"
+    ],
+    "run_at": "document_end",
+    "all_frames": false
+  }],
   "permissions": [
     "clipboardRead",
     "clipboardWrite",
-    "commands",
-    "input",
     "tabs",
     "<all_urls>"
   ]
