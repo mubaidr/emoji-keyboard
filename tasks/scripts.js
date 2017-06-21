@@ -53,17 +53,10 @@ gulp.task('scripts', (cb) => {
         ] : []),
         module: {
           rules: [{
-              test: /\.js$/,
-              loader: 'eslint-loader',
-              exclude: /node_modules/,
-              enforce: 'pre'
-            },
-            {
-              test: /\.js$/,
-              loader: 'babel-loader',
-              enforce: 'post'
-            }
-          ]
+            test: /\.js$/,
+            loader: 'babel-loader',
+            enforce: 'post'
+          }]
         }
       },
       webpack,
