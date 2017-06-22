@@ -15,10 +15,18 @@
       <ul class="categories-list">
         <li v-for="category in categories" class="button" :class="{'active': category === activeCategory}" v-on:click="activeCategory = category">{{category}}</li>
       </ul>
-      <hr/>
-      <ul class="emoji-list">
-        <li v-for="emoji in emojis" v-html="'&#x' + emoji.code_points.base"></li>
-      </ul>
+      <input type="text" class="input-control" v-model="search" placeholder="Search" />
+      <span class="title">Recent</span>
+      <div class="emoji-list">
+        <span v-for="emoji in emojisRecent()" v-html="'&#x' + emoji.code_points.base"></span>
+      </div>
+      <span class="title">{{activeCategory}}</span>
+      <div class="scroll-container">
+        <div class="emoji-list">
+          <span v-for="emoji in emojis" v-show="containSearch(emoji)" v-html="'&#x' + emoji.code_points.base"></span>
+        </div>
+      </div>
+
     </div>
 
     <script src="../scripts/popup.js" defer async></script>
