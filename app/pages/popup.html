@@ -11,13 +11,17 @@
 
   <body>
 
-    <div>
-      <h1>Oalalala &#x1f600;</h1>
-      <ul id="emojis"></ul>
-
+    <div id="emoji-app">
+      <ul class="categories-list">
+        <li v-for="category in categories" class="button" :class="{'active': category === activeCategory}" v-on:click="activeCategory = category">{{category}}</li>
+      </ul>
+      <hr/>
+      <ul class="emoji-list">
+        <li v-for="emoji in emojis" v-html="'&#x' + emoji.code_points.base"></li>
+      </ul>
     </div>
 
-    <script src="../scripts/popup.js"></script>
+    <script src="../scripts/popup.js" defer async></script>
   </body>
 
 </html>

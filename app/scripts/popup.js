@@ -1,10 +1,26 @@
-import emoji from './../data/emoji.json'
-/* eslint-disable no-undef */
-var emojiContainer = $('#emojis');
+import Vue from 'vue'
+import _ from 'lodash'
+import emojiData from './../data/emoji.json'
 
-//var txt = '&#x' + $(this).data('src') + ';';
-Object.keys(emoji).forEach((key) => {
-  var li = document.createElement('li');
-  li.innerHTML = '&#x' + key + ';';
-  emojiContainer.append(li);
+/* eslint-disable no-new */
+new Vue({
+  el: '#emoji-app',
+  data () {
+    return {
+      /* eslint-disable */
+      categories: ['People', 'Activity', 'Symbols', /* 'Regional', 'Modifier', */ 'Objects', 'Nature', 'Food', 'Travel' /*, 'Flags' */ ],
+      activeCategory: 'People'
+    }
+  },
+  watch: {},
+  computed: {
+    emojis() {
+      return _.orderBy(_.filter(emojiData, (emoji) => {
+        return emoji.category === this.activeCategory.toLowerCase()
+      }), 'order', 'asc')
+    }
+  },
+  created() {},
+  mounted() {},
+  methods: {}
 })
