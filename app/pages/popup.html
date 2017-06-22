@@ -5,30 +5,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emoji</title>
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
     <link rel="stylesheet" type="text/css" href="../styles/popup.css">
   </head>
 
   <body>
-
     <div id="emoji-app">
       <ul class="categories-list">
         <li v-for="category in categories" class="button" :class="{'active': category === activeCategory}" v-on:click="activeCategory = category">{{category}}</li>
       </ul>
-      <input type="text" class="input-control" v-model="search" placeholder="Search" />
+      <input type="text" class="input-control" v-model="emojiSearch" placeholder="Search" />
       <span class="title">Recent</span>
       <div class="emoji-list">
-        <span v-for="emoji in emojisRecent()" v-html="'&#x' + emoji.code_points.base"></span>
+        <span v-for="emoji in emojisRecent" v-html="'&#x' + emoji.unified"></span>
       </div>
       <span class="title">{{activeCategory}}</span>
       <div class="scroll-container">
         <div class="emoji-list">
-          <span v-for="emoji in emojis" v-show="containSearch(emoji)" v-html="'&#x' + emoji.code_points.base"></span>
+          <span v-for="emoji in emojis" v-on:click="selectEmoji(emoji)" v-show="containSearch(emoji)" v-html="'&#x' + emoji.unified"></span>
         </div>
       </div>
-
+      <br/>
     </div>
-
     <script src="../scripts/popup.js" defer async></script>
   </body>
 

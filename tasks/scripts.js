@@ -30,22 +30,6 @@ gulp.task('scripts', (cb) => {
         }
       },
       plugins: [
-        new webpack.ProvidePlugin({
-          $: 'jquery',
-          jQuery: 'jquery'
-        }),
-        new webpack.IgnorePlugin(
-          /jsdom$/
-        ),
-        new webpack.IgnorePlugin(
-          /xmlhttprequest$/
-        ),
-        new webpack.IgnorePlugin(
-          /location$/
-        ),
-        new webpack.IgnorePlugin(
-          /navigator$/
-        ),
         new webpack.DefinePlugin({
           'process.env': {
             'NODE_ENV': JSON.stringify(ENV)
