@@ -7,7 +7,7 @@ new Vue({
   el: '#emoji-app',
   data () {
     return {
-      categories: ['People', 'Activity', 'Symbols', 'Skin Tones', 'Objects', 'Nature', 'Foods', 'Places', 'Flags'],
+      categories: ['People', 'Activity', 'Symbols', 'Objects', 'Nature', 'Foods', 'Places', 'Flags'],
       activeCategory: 'People',
       emojiSearch: '',
       emojiSelected: '',
@@ -25,6 +25,11 @@ new Vue({
   created () {},
   mounted () {},
   methods: {
+    getSkinTones () {
+      return _.orderBy(_.filter(emojiData, (emoji) => {
+        return emoji.category.toLowerCase() === 'Skin Tones'.toLowerCase()
+      }), 'sort_order', 'asc')
+    },
     containSearch (emoji) {
       let txt = this.emojiSearch.toLowerCase()
       return emoji.name ? emoji.name.toLowerCase().includes(txt) : false ||

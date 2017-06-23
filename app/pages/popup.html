@@ -14,6 +14,12 @@
         <li v-for="category in categories" class="button" :class="{'active': category === activeCategory}" v-on:click="activeCategory = category">{{category}}</li>
       </ul>
       <input type="text" class="input-control" v-model="emojiSearch" placeholder="Search" />
+      <div v-show="activeCategory==='People' && false">
+        <span class="title">Skin Tones</span>
+        <div class="emoji-list">
+          <span v-for="emoji in getSkinTones()" v-html="'&#x' + emoji.unified"></span>
+        </div>
+      </div>
       <span class="title">Recent</span>
       <div class="emoji-list">
         <span v-for="emoji in emojisRecent" v-html="'&#x' + emoji.unified"></span>
