@@ -20,9 +20,11 @@
           <span v-for="emoji in getSkinTones()" v-html="'&#x' + emoji.unified"></span>
         </div>
       </div>
-      <span class="title">Recent</span>
-      <div class="emoji-list">
-        <span v-for="emoji in emojisRecent" v-html="'&#x' + emoji.unified"></span>
+      <div v-show="emojisRecent.length">
+        <span class="title">Recent</span>
+        <div class="emoji-list">
+          <span v-for="emoji in emojisRecent" v-html="'&#x' + emoji.unified"></span>
+        </div>
       </div>
       <span class="title">{{activeCategory}}</span>
       <div class="scroll-container">
