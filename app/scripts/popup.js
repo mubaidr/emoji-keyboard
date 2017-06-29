@@ -12,7 +12,8 @@ new Vue({
       activeCategory: 'People',
       emojiSearch: '',
       emojiSelected: '',
-      emojisRecent: []
+      emojisRecent: [],
+      chrome: chrome
     }
   },
   watch: {},
@@ -25,6 +26,7 @@ new Vue({
   },
   created () {},
   mounted () {
+    console.log(this.chrome)
     this.initializeRecentEmoji()
   },
   methods: {
@@ -52,28 +54,32 @@ new Vue({
     },
     /* chrome utilties */
     clearChromeStorage (callback) {
-      chrome.storage.local.clear(callback)
+      this.chrome.storage.local.clear(callback)
     },
     initializeRecentEmoji (callback) {
-      chrome.storage.local.get(null, (items) => {
+      this.chrome.storage.local.get(null, (items) => {
         if (items && items.emojis) {
           if (items.emojis.length > 0) {
             this.emojisRecent = items.emojis
           }
         } else {
-          chrome.local.storage.set('emojis', [], callback)
+          this.chrome.storage.local.set({
+            'emojis': []
+          }, callback)
         }
       })
     },
     addRecentEmoji (emoji, callback) {
-      chrome.storage.local.get(null, (items) => {
+      this.chrome.storage.local.get(null, (items) => {
         let emojis = items.emojis
-        if (items.emojis.length === 14) {
+        if (items.emojis.length === 7) {
           emojis.pop()
         }
         emojis.unshift(emoji)
         this.emojisRecent = emojis
-        chrome.local.storage.set('emojis', emojis, callback)
+        this.chrome.storage.local.set({
+          'emojis': emojis
+        }, callback)
       })
     }
   }
