@@ -28,15 +28,14 @@
       </div>
       <span class="title">{{activeCategory}}</span>
       <div class="scroll-container">
-        <div class="emoji-list large">
-          <div class="icon" v-for="emoji in emojis" v-on:click="selectEmoji(emoji)" v-show="containSearch(emoji)">
-            <div class="icon-img emojiIcon" :class="showemoji (emoji)"></div>
+        <div class="emoji-list">
+          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojis" v-on:click="selectEmoji (emoji)" v-show="containSearch (emoji)">
           </div>
         </div>
       </div>
       <br/>
     </div>
-    <script src="../scripts/popup.js" defer async></script>
+    <script src="../scripts/popup.js"></script>
   </body>
 
 </html>

@@ -39,7 +39,7 @@ new Vue({
         emoji.texts ? (emoji.texts.indexOf(txt) > -1) : false
     },
     selectEmoji (emoji) {
-      this.emojiSelected = '&#x' + emoji.unified
+      this.emojiSelected = emoji.unified
     },
     showemoji (emoji) {
       return '_' + emoji.unified
