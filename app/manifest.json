@@ -45,6 +45,7 @@
   "permissions": [
     "clipboardRead",
     "clipboardWrite",
+    "storage",
     "tabs",
     "<all_urls>"
   ]

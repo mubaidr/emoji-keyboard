@@ -17,13 +17,13 @@
       <div v-show="activeCategory==='People' && false">
         <span class="title">Skin Tones</span>
         <div class="emoji-list">
-          <span v-for="emoji in getSkinTones()" :class="showemoji (emoji)"></span>
+          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in getSkinTones()"></div>
         </div>
       </div>
       <div v-show="emojisRecent.length">
         <span class="title">Recent</span>
         <div class="emoji-list">
-          <span v-for="emoji in emojisRecent" :class="showemoji (emoji)"></span>
+          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojisRecent" v-on:click="selectEmoji (emoji, true)"></div>
         </div>
       </div>
       <span class="title">{{activeCategory}}</span>
