@@ -72,7 +72,10 @@ new Vue({
     addRecentEmoji (emoji, callback) {
       this.chrome.storage.local.get(null, (items) => {
         let emojis = items.emojis
-        if (items.emojis.length === 7) {
+        _.remove(emojis, {
+          unified: emoji.unified
+        })
+        if (items.emojis.length >= 7) {
           emojis.pop()
         }
         emojis.unshift(emoji)
