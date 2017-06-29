@@ -29,7 +29,7 @@
       <span class="title">{{activeCategory}}</span>
       <div class="scroll-container">
         <div class="emoji-list">
-          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojis" v-on:click="selectEmoji (emoji)" v-show="containSearch (emoji)">
+          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojis" v-on:click="selectEmoji (emoji)" v-if="containSearch (emoji)">
           </div>
         </div>
       </div>

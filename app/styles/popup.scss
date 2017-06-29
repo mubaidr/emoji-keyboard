@@ -30,7 +30,7 @@ body {
     padding: 0;
     margin: 4px;
     overflow: hidden;
-    transition: all .1s ease-out;
+    transition: transform .1s ease-out;
     will-change: transform;
     &:hover {
       transform: scale(1.25);
