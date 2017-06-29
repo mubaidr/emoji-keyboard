@@ -1,11 +1,11 @@
 .small .emojiIcon {
-  background: url(./data/sprites_24.png)
+  background: url(../images/sprites_24.png)
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
   .small .emojiIcon {
-    background: url(./data/sprites_24@2x.png);
+    background: url(../images/sprites_24@2x.png);
     background-size: 576px 2448px;
   }
 }
@@ -9719,13 +9719,13 @@ only screen and (min-device-pixel-ratio: 2) {
 }
 
 .emojiIcon {
-  background: url(./data/sprites_32.png)
+  background: url(../images/sprites_32.png)
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
   .emojiIcon {
-    background: url(./data/sprites_32@2x.png);
+    background: url(../images/sprites_32@2x.png);
     background-size: 1024px 2432px;
   }
 }
@@ -19439,16 +19439,19 @@ only screen and (min-device-pixel-ratio: 2) {
 }
 
 .large .emojiIcon {
-  background: url(./data/sprites_40.png)
+  background: url(../images/sprites_40.png)
 }
 
+
+/*
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
   .large .emojiIcon {
-    background: url(./data/sprites_40@2x.png);
+    background: url(../images/sprites_40@2x.png);
     background-size: 1600px 2440px;
   }
 }
+*/
 
 .large ._0023-20E3 {
   background-position: -0px -0px;

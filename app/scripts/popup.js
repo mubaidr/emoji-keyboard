@@ -38,8 +38,11 @@ new Vue({
         emoji.text ? emoji.text.toLowerCase().includes(txt) : false ||
         emoji.texts ? (emoji.texts.indexOf(txt) > -1) : false
     },
-    selectEmoji (code) {
-      this.emojiSelected = '&#x' + code.unified
+    selectEmoji (emoji) {
+      this.emojiSelected = '&#x' + emoji.unified
+    },
+    showemoji (emoji) {
+      return '_' + emoji.unified
     }
   }
 })

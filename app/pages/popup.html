@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emoji</title>
     <link rel="stylesheet" type="text/css" href="../styles/popup.css">
+    <link rel="stylesheet" type="text/css" href="../styles/icon-sprite-style.css">
   </head>
 
   <body>
@@ -17,19 +18,21 @@
       <div v-show="activeCategory==='People' && false">
         <span class="title">Skin Tones</span>
         <div class="emoji-list">
-          <span v-for="emoji in getSkinTones()" v-html="'&#x' + emoji.unified"></span>
+          <span v-for="emoji in getSkinTones()" :class="showemoji (emoji)"></span>
         </div>
       </div>
       <div v-show="emojisRecent.length">
         <span class="title">Recent</span>
         <div class="emoji-list">
-          <span v-for="emoji in emojisRecent" v-html="'&#x' + emoji.unified"></span>
+          <span v-for="emoji in emojisRecent" :class="showemoji (emoji)"></span>
         </div>
       </div>
       <span class="title">{{activeCategory}}</span>
       <div class="scroll-container">
-        <div class="emoji-list">
-          <span v-for="emoji in emojis" v-on:click="selectEmoji(emoji)" v-show="containSearch(emoji)" v-html="'&#x' + emoji.unified"></span>
+        <div class="emoji-list large">
+          <div class="icon" v-for="emoji in emojis" v-on:click="selectEmoji(emoji)" v-show="containSearch(emoji)">
+            <div class="icon-img emojiIcon" :class="showemoji (emoji)"></div>
+          </div>
         </div>
       </div>
       <br/>
