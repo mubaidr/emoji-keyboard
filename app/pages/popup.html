@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emoji</title>
     <link rel="stylesheet" type="text/css" href="../styles/popup.css">
+    <script src="../scripts/popup.js" defer></script>
   </head>
 
   <body>
@@ -20,22 +21,22 @@
           <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in getSkinTones()"></div>
         </div>
       </div>
-      <div v-show="emojisRecent.length">
+      <div v-show="emojiRecent.length">
         <span class="title">Recent</span>
         <div class="emoji-list">
-          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojisRecent" v-on:click="selectEmoji (emoji, true)"></div>
+          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojiRecent" v-on:click="selectEmoji (emoji, true)"></div>
         </div>
       </div>
-      <span class="title">{{activeCategory}}</span>
-      <div class="scroll-container">
-        <div class="emoji-list">
-          <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojis" v-on:click="selectEmoji (emoji)" v-if="containSearch (emoji)">
+      <div v-show="emojiData.length">
+        <span class="title">{{activeCategory}}</span>
+        <div class="scroll-container">
+          <div class="emoji-list">
+            <div class="icon emojiIcon" :class="showemoji (emoji)" v-for="emoji in emojis" v-on:click="selectEmoji (emoji)" v-if="containSearch (emoji)">
+            </div>
           </div>
         </div>
       </div>
-      <br/>
     </div>
-    <script src="../scripts/popup.js"></script>
   </body>
 
 </html>

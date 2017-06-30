@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import _ from 'lodash'
-import emojiData from './../data/emojis.json'
 
 /* eslint-disable no-new, no-undef */
 
@@ -12,26 +11,27 @@ new Vue({
       activeCategory: 'People',
       emojiSearch: '',
       emojiSelected: '',
-      emojisRecent: [],
-      chrome: chrome
+      emojiRecent: [],
+      emojiData: require('./../data/emojis.json')
     }
   },
   watch: {},
   computed: {
     emojis () {
-      return _.orderBy(_.filter(emojiData, (emoji) => {
+      return _.orderBy(_.filter(this.emojiData, (emoji) => {
         return emoji.category.toLowerCase() === this.activeCategory.toLowerCase()
       }), 'sort_order', 'asc')
     }
   },
-  created () {},
-  mounted () {
-    console.log(this.chrome)
+  created () {
     this.initializeRecentEmoji()
+  },
+  mounted () {
+    this.$nextTick(() => {})
   },
   methods: {
     getSkinTones () {
-      return _.orderBy(_.filter(emojiData, (emoji) => {
+      return _.orderBy(_.filter(this.emojiData, (emoji) => {
         return emoji.category.toLowerCase() === 'Skin Tones'.toLowerCase()
       }), 'sort_order', 'asc')
     },
@@ -54,23 +54,23 @@ new Vue({
     },
     /* chrome utilties */
     clearChromeStorage (callback) {
-      this.chrome.storage.local.clear(callback)
+      chrome.storage.local.clear(callback)
     },
     initializeRecentEmoji (callback) {
-      this.chrome.storage.local.get(null, (items) => {
+      chrome.storage.local.get(null, (items) => {
         if (items && items.emojis) {
           if (items.emojis.length > 0) {
-            this.emojisRecent = items.emojis
+            this.emojiRecent = items.emojis
           }
         } else {
-          this.chrome.storage.local.set({
+          chrome.storage.local.set({
             'emojis': []
           }, callback)
         }
       })
     },
     addRecentEmoji (emoji, callback) {
-      this.chrome.storage.local.get(null, (items) => {
+      chrome.storage.local.get(null, (items) => {
         let emojis = items.emojis
         _.remove(emojis, {
           unified: emoji.unified
@@ -79,8 +79,8 @@ new Vue({
           emojis.pop()
         }
         emojis.unshift(emoji)
-        this.emojisRecent = emojis
-        this.chrome.storage.local.set({
+        this.emojiRecent = emojis
+        chrome.storage.local.set({
           'emojis': emojis
         }, callback)
       })
