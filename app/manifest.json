@@ -39,11 +39,10 @@
       "scripts/contentscript.js"
     ],
     "run_at": "document_end",
-    "all_frames": false
+    "all_frames": true
   }],
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "permissions": [
-    "clipboardWrite",
     "storage",
     "tabs",
     "<all_urls>"

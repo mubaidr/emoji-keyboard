@@ -18,6 +18,10 @@ new Vue({
   watch: {
     'emojiSelected' (value) {
       this.copyToClipboard(value)
+
+      if (!isRecent) {
+        this.addRecentEmoji(emoji)
+      }
     }
   },
   computed: {
@@ -49,10 +53,6 @@ new Vue({
     },
     selectEmoji (emoji, isRecent) {
       this.emojiSelected = String.fromCodePoint('0x' + emoji.unified)
-
-      if (!isRecent) {
-        this.addRecentEmoji(emoji)
-      }
     },
     showemoji (emoji) {
       return '_' + emoji.unified
