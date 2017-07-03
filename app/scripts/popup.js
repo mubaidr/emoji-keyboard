@@ -43,11 +43,11 @@ new Vue({
         emoji.texts ? (emoji.texts.indexOf(txt) > -1) : false
     },
     selectEmoji (emoji, isRecent) {
-      this.copyToClipboard(String.fromCodePoint('0x' + emoji.unified))
-
-      if (!isRecent) {
-        this.addRecentEmoji(emoji)
-      }
+      let encodedEmoji = String.fromCodePoint('0x' + emoji.unified)
+      this.copyToClipboard(encodedEmoji)
+      this.addRecentEmoji(emoji, () => {
+        this.insertIntoField(encodedEmoji)
+      })
     },
     showemoji (emoji) {
       return '_' + emoji.unified
@@ -94,6 +94,14 @@ new Vue({
       input.select()
       document.execCommand('Copy')
       document.body.removeChild(input)
+    },
+    insertIntoField (emoji) {
+      chrome.tabs.executeScript({
+        code: 'window.___emojikeyboard_emoji="' + emoji + '";'
+      })
+      chrome.tabs.executeScript({
+        file: 'scripts/insertemoji.js'
+      })
     }
   }
 })

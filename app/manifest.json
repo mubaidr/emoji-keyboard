@@ -45,6 +45,8 @@
   "permissions": [
     "storage",
     "tabs",
-    "<all_urls>"
+    "activeTab",
+    "http://*/*",
+    "https://*/*"
   ]
 }
