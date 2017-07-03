@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import _ from 'lodash'
+import alertify from './alertify'
 
 /* eslint-disable no-new, no-undef */
 
@@ -45,6 +46,10 @@ new Vue({
     selectEmoji (emoji, isRecent) {
       let encodedEmoji = String.fromCodePoint('0x' + emoji.unified)
       this.copyToClipboard(encodedEmoji)
+
+      alertify.logPosition('bottom right')
+      alertify.success('Coppied to clipboard!')
+
       this.addRecentEmoji(emoji, () => {
         this.insertIntoField(encodedEmoji)
       })
