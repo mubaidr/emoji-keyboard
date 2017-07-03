@@ -10,20 +10,11 @@ new Vue({
       categories: ['People', 'Activity', 'Symbols', 'Objects', 'Nature', 'Foods', 'Places', 'Flags'],
       activeCategory: 'People',
       emojiSearch: '',
-      emojiSelected: '',
       emojiRecent: [],
       emojiData: require('./../data/emojis.json')
     }
   },
-  watch: {
-    'emojiSelected' (value) {
-      this.copyToClipboard(value)
-
-      if (!isRecent) {
-        this.addRecentEmoji(emoji)
-      }
-    }
-  },
+  watch: {},
   computed: {
     emojis () {
       return _.orderBy(_.filter(this.emojiData, (emoji) => {
@@ -52,7 +43,11 @@ new Vue({
         emoji.texts ? (emoji.texts.indexOf(txt) > -1) : false
     },
     selectEmoji (emoji, isRecent) {
-      this.emojiSelected = String.fromCodePoint('0x' + emoji.unified)
+      this.copyToClipboard(String.fromCodePoint('0x' + emoji.unified))
+
+      if (!isRecent) {
+        this.addRecentEmoji(emoji)
+      }
     },
     showemoji (emoji) {
       return '_' + emoji.unified
