@@ -15,7 +15,11 @@ new Vue({
       emojiData: require('./../data/emojis.json')
     }
   },
-  watch: {},
+  watch: {
+    'emojiSelected' (value) {
+      this.copyToClipboard(value)
+    }
+  },
   computed: {
     emojis () {
       return _.orderBy(_.filter(this.emojiData, (emoji) => {
@@ -44,7 +48,8 @@ new Vue({
         emoji.texts ? (emoji.texts.indexOf(txt) > -1) : false
     },
     selectEmoji (emoji, isRecent) {
-      this.emojiSelected = emoji.unified
+      this.emojiSelected = String.fromCodePoint('0x' + emoji.unified)
+
       if (!isRecent) {
         this.addRecentEmoji(emoji)
       }
@@ -84,6 +89,16 @@ new Vue({
           'emojis': emojis
         }, callback)
       })
+    },
+    copyToClipboard (text) {
+      const input = document.createElement('input')
+      input.style.position = 'fixed'
+      input.style.opacity = 0
+      input.value = text
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand('Copy')
+      document.body.removeChild(input)
     }
   }
 })
