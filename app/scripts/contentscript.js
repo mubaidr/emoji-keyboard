@@ -7,7 +7,12 @@ chrome.storage.onChanged.addListener(function (changes, namespace) {
   if (window.___emojikeyboard_element) {
     for (let key in changes) {
       let emoji = changes[key].newValue[0]
-      window.___emojikeyboard_element.value += String.fromCodePoint('0x' + emoji.unified)
+      if (emoji) {
+        let text = window.___emojikeyboard_element.value
+        let selStart = window.___emojikeyboard_element.selectionStart
+        let selEnd = window.___emojikeyboard_element.selectionEnd
+        window.___emojikeyboard_element.value = text.slice(0, selStart) + String.fromCodePoint('0x' + emoji.unified) + text.slice(selEnd, text.length)
+      }
     }
   }
 })
