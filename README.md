@@ -1,5 +1,7 @@
 # emoji keyboard
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/mubaidr/emoji-keyboard.svg)](https://greenkeeper.io/)
+
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
 ## Installation
